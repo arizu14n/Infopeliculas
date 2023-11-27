@@ -1,0 +1,78 @@
+:root {
+    --colorboton: #8BE8E5;
+}
+
+* {
+margin: 0;
+padding: 0;
+
+}
+
+body{
+    background-color: #A084E8;
+}
+
+/* NAVBAR*/
+
+.navbar {
+    background-color: #6F61C0;
+}
+.navbar-brand {
+    color: #8BE8E5;
+    font-size: 42px;
+}
+.navbar-brand:hover {
+    color: #45f06a;
+    font-weight: bold;
+    text-shadow: #000000 1px 1px 1px;
+    transition: all cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.5s;
+    
+}
+.nav-link {
+    color: #8BE8E5;
+    font-size: 28px;
+}
+.nav-link:hover{
+    color: #D5FFE4;
+    font-weight: bold;
+    font-size: 38px;
+    text-shadow: #000000 1px 1px 1px;
+}
+.btn-buscar{
+    border-color: var(--colorboton);
+    color: var(--colorboton) ;
+}
+.btn-buscar:hover{
+    border-color: var(--colorboton);
+    background-color: var(--colorboton);
+    color: white ;
+    font-weight: bold;
+    text-shadow: #6F61C0 1px 1px 1px;
+}
+
+/* CARRUSEL*/
+.h2carru{
+    text-align: center;
+    color: #8BE8E5;
+    text-shadow: #000000 1px 1px 1px;
+}
+
+.carru {
+    
+    color: #D5FFE4;
+    text-shadow: #000000 1px 1px 1px;
+}
+/* PELICULAS*/
+.card-body{
+    background-color: #6F61C0;
+}
+.card-lista{
+    border: none;
+    margin: 0;
+    padding: 0;
+    transition: all cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.5s;
+}
+.card-lista:hover {
+    cursor: pointer    ;
+    transform: scale(1.1);
+}
