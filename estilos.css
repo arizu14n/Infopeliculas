@@ -65,6 +65,7 @@ body{
 /* PELICULAS*/
 .card-body{
     background-color: #6F61C0;
+    height: 27vh;
 }
 .card-lista{
     border: none;
