@@ -61,7 +61,7 @@ body{
     color: #6F61C0;
     text-shadow: #000000 2px 1.5px 1px;
 }
-.carru {
+.carru, .card-text {
     
     color: #D5FFE4;
     text-shadow: #000000 1px 1px 1px;
@@ -80,6 +80,7 @@ body{
     /* height: 23vh; */
 }
 .card-title  {
+    
     padding: 3px;
     text-align: center;
 }
@@ -87,7 +88,7 @@ body{
     border: none;
     margin: 0;
     padding: 0;
-   /* transition: all cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.5s;*/
+    transition: all cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.5s;
 }
 .card-lista:hover {
     cursor: pointer    ;
@@ -95,3 +96,21 @@ body{
 
 }
 
+
+/*  MODAL  */
+
+.modal-header{
+    background-color: #6F61C0;
+}
+
+.modal-body{
+    background-color:#A084E8  ;
+}
+
+.modal-footer{
+    background-color: #6F61C0;
+}
+
+.spinner-modal{
+    height: 400px;
+}
