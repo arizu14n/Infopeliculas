@@ -64,6 +64,8 @@ let boton_mejor_calificadas = document.getElementById("button-mejor-calificadas"
 let boton_populares = document.getElementById("button-populares");
 let boton_proximos_estrenos = document.getElementById("button-proximos-estrenos");
 let titulo = document.getElementById("titulo-principal");
+let modal_body = document.getElementById("modal-body")
+
 
 const url_pelis_populares = "https://api.themoviedb.org/3/movie/popular";
 const url_pelis_mejor_calificadas = "https://api.themoviedb.org/3/movie/top_rated";
@@ -80,6 +82,14 @@ const spinner = `
                         <span class="visually-hidden">Cargando...</span>
                     </div>
                 </div>;`;
+
+const spinner_modal = 
+                `<div class="d-flex justify-content-center align-items-center spinner-modal">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Cargando...</span>
+                    </div>
+                </div>`;
+
 
 CargaPeliculasTop("now_playing");
 
@@ -116,39 +126,38 @@ if (boton_proximos_estrenos) {
 
 
 async function CargaPeliculasTop(type) {
-               try {
-                        let url;
-                        let contenido_pelis_resp = "";
-                        if( type === "top_rated") {
-                            url = url_pelis_mejor_calificadas;
-                        }
-                        else if (type === "popular") {
-                            url = url_pelis_populares;
-                        }
-                        else if (type === "now_playing") {
-                            url = url_pelis_en_cartelera;
-                        }
-                        else if (type === "upcoming") {
-                            url = url_pelis_proximos_estrenos;
-                        }
-                        top15.innerHTML = spinner;
-                        const respuesta = await fetch(
-                            `${url}?api_key=${api_key}&language=${lenguaje}&page=${pagina}`
-                            );
-
-                        if (respuesta.status === 200) {
-                        const datos = await respuesta.json();
-                        //var puesto = 0;
-                        datos.results.forEach((pelicula, indice) => {
-                          contenido_pelis_resp += `<div class="col-12 col-md-6 col-lg-3 py-2 p-sm-2">
-                           <div class="card-lista shadow" id=${pelicula.id}>
-                             <h5 class="card-title carru">Puesto ${indice + 1} </h5>  
-                             <img src="https://image.tmdb.org/t/p/w500${pelicula.poster_path}" class="img-fluid" alt="...">
-                               <div class="card-body">
-                                 <a class="btn btn-buscar d-block end" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">+Info</a>
-                               </div>
-                             </div>
-                       </div>`;
+    try {
+        let url;
+        let contenido_pelis_resp = "";
+        if( type === "top_rated") {
+            url = url_pelis_mejor_calificadas;
+            }
+        else if (type === "popular") {
+            url = url_pelis_populares;
+            }
+        else if (type === "now_playing") {
+            url = url_pelis_en_cartelera;
+            }
+        else if (type === "upcoming") {
+            url = url_pelis_proximos_estrenos;
+            }
+        top15.innerHTML = spinner;
+        const respuesta = await fetch(
+        `${url}?api_key=${api_key}&language=${lenguaje}&page=${pagina}`
+        );
+        if (respuesta.status === 200) {
+        const datos = await respuesta.json();
+        datos.results.forEach((pelicula, indice) => {
+        contenido_pelis_resp += 
+            `<div class="col-12 col-md-6 col-lg-3 py-2 p-sm-2">
+                <div class="card-lista shadow" >
+                    <h5 class="card-title carru">Puesto ${indice + 1} </h5>  
+                    <img src="https://image.tmdb.org/t/p/w500${pelicula.poster_path}" class="img-fluid" alt="...">
+                <div class="card-body" >
+                    <a class="btn btn-buscar d-block end" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" data-pelicula-id=${pelicula.id}>+Info</a>
+                </div>
+                </div>
+            </div>`;
                          
                         });
                         top15.innerHTML = contenido_pelis_resp;
@@ -166,11 +175,34 @@ async function CargaPeliculasTop(type) {
 
                 async function CargaPeliculasPorId(id){
                 try {
+                    modal_body.innerHTML = spinner_modal; 
+                    
                     const respuesta = await fetch(
-                        `${url_pelis_detalles}/${id}?api_key=${api_key}&language=${lenguaje}`
+                        `${url_pelis_detalles}${id}?api_key=${api_key}&language=${lenguaje}`
                         );
                         if (respuesta.status === 200) {
-                            const datos = await respuesta.json();
+                            const data = await respuesta.json();
+                            modal_body.innerHTML = `<div class="card mb-3 border border-0" >
+                                    <div class="row g-0">
+                                        <div class="col-12 col-sm-6 d-flex justify-content-center">
+                                            <img src="https://image.tmdb.org/t/p/w400${data.poster_path}" class="img-fluid rounded-start" alt="...">
+                                        </div>
+                                    <div class="col-12 col-sm-6 card-body">
+                                        <div class="card-body">
+                                            <h5 class="card-title carru">${data.title}</h5>
+                                            <p class="card-text carru">Sinopsis:</p>
+                                            <p class="card-text carru">${data.overview}.</p>
+                                            <p class="card-text carru">Calificación:</p>
+                                            <p class="card-text carru">${data.vote_average}</p>
+                                            <p class="card-text carru">Total de votos:</p>
+                                            <p class="card-text carru">${data.vote_count}</p>
+                                            <p class="card-text carru">Frase favorita:</p>
+                                            <p class="card-text carru">${data.tagline}</p>
+                                            Lanzamiento: </small>${data.release_date}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`;
 
                             
                         } else if (respuesta.status === 401) {
@@ -186,4 +218,7 @@ async function CargaPeliculasTop(type) {
                 };
 
                 
-              
+document.addEventListener("show.bs.modal", async (event) => {
+    let id = event.relatedTarget.dataset.peliculaId;
+    CargaPeliculasPorId(id);
+} )              ;
