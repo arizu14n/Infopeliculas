@@ -18,8 +18,11 @@ body{
     background-color: #6F61C0;
 }
 .navbar-brand {
+    background-color: #6F61C0;
     color: #8BE8E5;
     font-size: 42px;
+    border: none;
+    padding: 2px;
 }
 .navbar-brand:hover {
     color: #45f06a;
