@@ -4,6 +4,5 @@ Lenguajes utilizados: ![HTML](https://img.shields.io/badge/HMTL%20-%20blue), ![C
 </br>
 Consume la API gratuita: ![[TheMovieDB]](https://img.shields.io/badge/TheMovieDB%20-%20Pink)
 </br>
-[Link a la API:](https://img.shields.io/badge/Link%20a%20la%20API%20-%20blue
-)
+![Link a la API:](https://img.shields.io/badge/Link%20a%20la%20API%20-%20blue)
 
