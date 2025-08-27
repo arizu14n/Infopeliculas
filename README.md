@@ -4,4 +4,5 @@ Lenguajes utilizados: ![HTML](https://img.shields.io/badge/HMTL%20-%20blue), ![C
 </br>
 Consume la API gratuita: ![[TheMovieDB]](https://img.shields.io/badge/TheMovieDB%20-%20Pink)
 </br>
-Link a la API: https://developer.themoviedb.org/reference/intro/getting-started
+Link a la API: https://img.shields.io/badge/https%3A%2F%2Fdeveloper.themoviedb.org%2Freference%2Fintro%2Fgetting-started
+
