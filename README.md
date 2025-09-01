@@ -6,4 +6,6 @@ Consume la API gratuita: ![[TheMovieDB]](https://img.shields.io/badge/TheMovieDB
 
 Este proyecto consume una API REST y presenta un catálogo de películas ordenadas hasta en 4 categorías distintas, con una sección para ver información de la película seleccionada.
 
+Proyecto publicado: https://arizu14n.github.io/Infopeliculas/ 
+
 
